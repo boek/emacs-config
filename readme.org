@@ -1,0 +1,50 @@
+#+TITLE: Emacs
+
+* Emacs
+:PROPERTIES:
+:header-args:emacs-lisp :lexical t :results silent
+:END:
+** Install
+*** Emacs
+I'm using the [[https://github.com/d12frosted/homebrew-emacs-plus][Homebrew Emacs Plus]] package in homebrew. You can install it with
+
+#+begin_src sh :tangle no
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+#+end_src
+*** Doom
+#+begin_src sh :tangle no
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+#+end_src
+** Configuring Emacs
+I'm using the literate configuration mode. This can be enabled by uncommenting ~literate~ in ~init.el~. I'm changing where the default configuration file is stored by adding the following to the top of my ~init.el~.
+
+#+begin_src emacs-lisp :tangle no
+(setq +literate-config-file "~/Documents/areas/emacs/readme.org")
+#+end_src
+*** Identity
+ Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets. It is optional.
+
+ #+begin_src emacs-lisp
+(setq user-full-name "Jeff Boek"
+      user-mail-address "j@jboek.com")
+#+end_src
+*** Theme
+#+begin_src emacs-lisp
+(setq doom-theme 'doom-nord-light)
+#+end_src
+*** Font
+#+begin_src  emacs-lisp
+(setq doom-font (font-spec :family "Fira Code" :size 14)
+      doom-variable-pitch-font (font-spec :family "Fira Code" :size 15))
+#+end_src
+*** Org
+#+begin_src emacs-lisp
+(setq org-directory "~/Documents/")
+#+end_src
+** Projects
+Using emacs for project management.
+#+begin_src emacs-lisp
+(projectile-add-known-project "~/Documents/Areas/emacs")
+#+end_src
