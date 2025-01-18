@@ -1,0 +1,10 @@
+#+title: Magit
+* What is it?
+Magit is an excellent git client for Emacs.
+* How do I?
+** See the status?
+~SPC g g~
+** Stage a file?
+~s~
+** Commit?
+~c~ insert message ~:wq~
