@@ -1,5 +1,5 @@
 #+TITLE: Emacs
-
+[[./screenshot.png]]
 * Emacs
 :PROPERTIES:
 :header-args:emacs-lisp :lexical t :results silent
