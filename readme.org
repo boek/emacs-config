@@ -85,5 +85,5 @@ Let's add a few projects:
 
 #+begin_src emacs-lisp
 (projectile-add-known-project "~/Documents/Areas/emacs")
-(projectile-add-known-project "~/Documents/Areas/oreo")
+(projectile-add-known-project "~/Documents/Areas/mozilla")
 #+end_src

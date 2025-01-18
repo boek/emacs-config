@@ -1,0 +1,3 @@
+#+title: Dired
+* What is Dired?
+Dired is an [[org:Areas/emacs/readme.org][emacs]] buffer for managing the file system
