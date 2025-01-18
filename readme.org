@@ -40,8 +40,25 @@ I'm using the literate configuration mode. This can be enabled by uncommenting ~
       doom-variable-pitch-font (font-spec :family "Fira Code" :size 15))
 #+end_src
 *** Org
+First lets setup the files that we want to search from
 #+begin_src emacs-lisp
 (setq org-directory "~/Documents/")
+#+end_src
+
+I wan't to be able to scan all org files, but only a few levels deep. For example this will match =~/Documents/Projects/ABC/readme.org= but not =~/Documents/Projects/ABC/node_modules/package/this_is_hilarious/readme.org=.
+
+#+begin_src emacs-lisp
+(setq org-agenda-files
+      (split-string
+       (shell-command-to-string
+        "find ~/Documents -mindepth 1 -maxdepth 4 -type f -name '*.org'")
+       "\n" t))
+#+end_src
+
+When refiling I was running into problems as I have multiple files named =readme.org= so it would only use the first one that it found. We can fix this with
+
+#+begin_src emacs-lisp
+(setq org-refile-use-outline-path 'full-file-path)
 #+end_src
 ** Projects
 Using emacs for project management.
