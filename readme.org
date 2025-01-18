@@ -13,6 +13,24 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus
 #+end_src
 *** Doom
+**** Dependencies
+First, doom dependencies
+#+begin_src sh :tangle no
+# required dependencies
+brew install git ripgrep
+# optional dependencies
+brew install coreutils fd
+# Installs clang
+xcode-select --install
+
+# Install shellcheck
+brew install shellcheck
+
+# Install fd for faster searches
+brew install fd
+#+end_src
+
+**** Install
 #+begin_src sh :tangle no
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emacs.d/bin/doom install
@@ -58,7 +76,7 @@ I wan't to be able to scan all org files, but only a few levels deep. For exampl
 When refiling I was running into problems as I have multiple files named =readme.org= so it would only use the first one that it found. We can fix this with
 
 #+begin_src emacs-lisp
-(setq org-refile-use-outline-path 'full-file-path)
+(setq org-refile-use-outline-path 'title)
 #+end_src
 ** Projects
 Using emacs for project management.
