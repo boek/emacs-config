@@ -1,0 +1,3 @@
+#+title: Protips
+* Raising the popup window into a regular window
+=C-~= to execute =+popup/raise=
