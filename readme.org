@@ -45,6 +45,10 @@ I'm using the literate configuration mode. This can be enabled by uncommenting ~
 #+end_src
 ** Projects
 Using emacs for project management.
+
+Let's add a few projects:
+
 #+begin_src emacs-lisp
 (projectile-add-known-project "~/Documents/Areas/emacs")
+(projectile-add-known-project "~/Documents/Areas/oreo")
 #+end_src
