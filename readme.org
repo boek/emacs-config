@@ -59,25 +59,25 @@ I'm using the literate configuration mode. This can be enabled by uncommenting ~
 #+end_src
 *** Org
 First lets setup the files that we want to search from
-#+begin_src emacs-lisp
-(setq org-directory "~/Documents/")
-#+end_src
-
-I wan't to be able to scan all org files, but only a few levels deep. For example this will match =~/Documents/Projects/ABC/readme.org= but not =~/Documents/Projects/ABC/node_modules/package/this_is_hilarious/readme.org=.
 
 #+begin_src emacs-lisp
-(setq org-agenda-files
-      (split-string
-       (shell-command-to-string
-        "find ~/Documents -mindepth 1 -maxdepth 4 -type f -name '*.org'")
-       "\n" t))
+(setq org-directory "~/Documents/Notes")
+(setq org-agenda-files '("~/Documents/Notes"))
 #+end_src
-
-When refiling I was running into problems as I have multiple files named =readme.org= so it would only use the first one that it found. We can fix this with
-
+**** Roam
+Let's setup =org-roam=.
 #+begin_src emacs-lisp
-(setq org-refile-use-outline-path 'title)
+(setq org-roam-directory (file-truename "~/Documents/Notes"))
+(setq org-roam-dailies-directory "")
 #+end_src
+**** Capture
+#+begin_src emacs-lisp
+(setq org-capture-templates
+      '(("c" "Capture" entry
+         (file "~/Documents/Notes/20250201141502-inbox.org")
+         "* %^{Title} \n:PROPERTIES:\n:ID: %(org-id-new)\n:CREATED: %U\n:END:\n\n%?")))
+#+end_src
+
 ** Projects
 Using emacs for project management.
 
@@ -87,3 +87,6 @@ Let's add a few projects:
 (projectile-add-known-project "~/Documents/Areas/emacs")
 (projectile-add-known-project "~/Documents/Areas/mozilla")
 #+end_src
+** Backlog
+Dumping everything I want to do to improve my environment here
+*** TODO Setup capture templates to work with =org-roam=
